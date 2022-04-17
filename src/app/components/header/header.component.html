@@ -1,0 +1,29 @@
+<div class="header">
+
+  <div class="header__title">
+    <div>
+      <a class="app-a" routerLinkActive="app-a_active" (click)="onClicked()">
+        <span class="material-icons md-36 estiloIcon">menu</span>
+      </a>
+    </div>
+    <span>Menu </span>
+  </div>
+  <img src="../../../assets/image/background-header.jpg" alt="">
+  <div class="header__navigation">
+    <a class="app-a" routerLink="/home" routerLinkActive="app-a_active">HOME</a>
+    <a class="app-a" routerLink="/servicios" routerLinkActive="app-a_active">SERVICIOS</a>
+    <a class="app-a" routerLink="/reservas" routerLinkActive="app-a_active">RESERVAS</a>
+    <a class="app-a" routerLink="/contacto" routerLinkActive="app-a_active">CONTACTO</a>
+    <a class="app-a" routerLink="/galeria" routerLinkActive="app-a_active">GALERIA</a>
+  </div>
+
+  <div class="header__buttons">
+
+    <app-button routerLink="/signin">Login</app-button>
+
+    <app-button routerLink="/signup">Registrar</app-button>
+
+  </div>
+
+
+</div>

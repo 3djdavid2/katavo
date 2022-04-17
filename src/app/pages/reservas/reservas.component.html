@@ -1,0 +1,29 @@
+<h1>Reserva de Atención</h1>
+<div class="container">
+    <mat-card class="calendar-card">
+
+        <h2>Seleccione día:</h2>
+        <mat-calendar [(selected)]="selected"></mat-calendar>
+    </mat-card><br>
+
+
+
+    <mat-card class="calendar-card">
+        <h2>Seleccione una hora disponible:</h2>
+        <mat-button-toggle-group #group="matButtonToggleGroup" name="fontStyle" aria-label="Font Style">
+            <mat-button-toggle class="button-toggle" value="08:30">08:30</mat-button-toggle>
+            <mat-button-toggle class="button-toggle" value="09:00">09:00</mat-button-toggle>
+            <mat-button-toggle class="button-toggle" value="09:30">09:30</mat-button-toggle>
+        </mat-button-toggle-group>
+    </mat-card><br>
+
+    <mat-card class="calendar-card">
+        <div> Detalles Reserva:</div><br>
+        <div>Nombre Cliente: David Vivanco</div>
+        <div>Profesional: tia Katy</div>
+        <div>{{selected | date : 'fullDate': undefined:'es'}}</div>
+        <div>{{group.value}}</div><br>
+        <div>Trabajo a realizar: Alisado de pestañas</div>
+
+    </mat-card>
+</div>
