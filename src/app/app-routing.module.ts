@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ContactoComponent } from '../../src/app/pages/contacto/contacto.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     redirectTo: '/',
     pathMatch: 'full'
   },
@@ -14,9 +15,10 @@ const routes: Routes = [
         path: 'reservas',
         loadChildren:()=>import('./pages/reservas/reservas.module').then(m=>m.ReservasModule)
       },
+      
       {
-        path:'contacto',
-        loadChildren:()=>import('./pages/contacto/contacto.module').then(m=>m.ContactoModule)
+        path: 'contacto',
+        component: ContactoComponent
       }
     ]
   }

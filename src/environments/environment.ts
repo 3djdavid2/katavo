@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+ // baseUrl: 'http://52.204.109.91/send-email',
+  baseUrl: 'https://davidvivancoweb.com/api/send-email'
 };
 
 /*
