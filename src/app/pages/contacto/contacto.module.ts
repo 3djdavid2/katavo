@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
-    ContactoComponent,
+    // ContactoComponent,
     AutoFocusInputDirective
   ],
   imports: [

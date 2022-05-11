@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
  
-  baseUrl: 'https://katavo.cl/api/send-email'
+  baseUrl: '/api/send-email'
 };
 
 /*

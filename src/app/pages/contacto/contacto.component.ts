@@ -41,7 +41,7 @@ export class ContactoComponent implements OnInit {
         next: (res: any) => {
 
           alert(res.message)
-          this.router.navigate(['/portafolio']);
+          this.router.navigate(['/home']);
         },
         error: (e: any) => {
           console.log("el error es:", e)
