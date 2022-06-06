@@ -1,0 +1,72 @@
+@import "src/styles/colors.scss";
+
+.my-card {
+    width: 400px;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin: auto auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
+    background-color: rgb(247, 247, 247);
+    text-align: center;
+}
+.mat-dialog-container {
+    padding: 0px;
+}
+
+div {
+    padding-top: 5px;
+}
+
+.my-form {
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+input.ng-valid.ng-touched {
+    border: 2px solid green;
+}
+
+input.ng-invalid.ng-touched {
+    border: 1px solid rgb(105, 105, 105);
+}
+
+.error {
+    color: rgb(194, 37, 37);
+    size: 10px;
+    font-size: 90%;
+}
+
+input {
+    height: 30px;
+}
+
+input:hover {
+    cursor: auto;
+}
+.mat-input-underline {
+    background-color: white;
+}
+.ng-star-inserted {
+    text-decoration: none;
+}
+button {
+    padding: 8px 20px;
+    background: transparent;
+    border-radius: 8px;
+    border: 2px solid $secondary-light;
+    transition: 0.25s;
+    margin: 0 4px;
+
+    &:hover,
+    &:focus {
+        background: $secondary-light;
+        border: 2px solid $secondary-light;
+        color: $on-secondary;
+    }
+}

@@ -1,2 +1,12 @@
-@import "@angular/material/prebuilt-themes/purple-green.css";
 @import "styles/main.scss";
+@import "@angular/material/prebuilt-themes/purple-green.css";
+
+.mat-dialog-container{
+    background-color: white;
+    padding: 10px !important;
+    
+}
+*{
+    color: rgb(39, 39, 39);   
+}
+

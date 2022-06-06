@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ContactoComponent } from '../../src/app/pages/contacto/contacto.component';
+import { DialogSesionComponent } from './components/dialog-sesion/dialog-sesion.component';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -9,20 +11,31 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path:'',
-    children:[
+    path: '',
+    children: [
       {
         path: 'reservas',
-        loadChildren:()=>import('./pages/reservas/reservas.module').then(m=>m.ReservasModule)
+        loadChildren: () => import('./pages/reservas/reservas.module').then(m => m.ReservasModule)
       },
-      
       {
-        path: 'contacto',
-        component: ContactoComponent
+        path: 'servicios',
+        loadChildren: () => import('./pages/servicios/servicios.module').then(m => m.ServiciosModule)
       }
     ]
+  },
+  {
+    path: 'signup',
+    component: SignupComponent
+  },
+  {
+    path: 'contacto',
+    component: ContactoComponent
+  },
+  {
+    path: 'dialogsesion',
+    component: DialogSesionComponent
   }
- 
+
 ];
 
 @NgModule({

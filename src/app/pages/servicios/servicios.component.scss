@@ -1,0 +1,39 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    
+    &__item {
+        display: flex;
+        padding: 1rem;
+    }
+}
+
+.mat-class {
+    background-color: aliceblue;
+    color: black;
+    max-width: 400px;
+}
+
+.precio {
+    font-size: 20px;
+    text-align: right;
+}
+mat-card img {
+    object-fit: cover;
+    padding: 5px;
+    width: 400px;
+    height: 73%;
+}
+p {
+    display: block;
+    max-width: 400px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+a{
+    text-decoration: underline;
+}

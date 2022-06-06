@@ -1,0 +1,33 @@
+<div products="products"> Servicios</div>
+
+<ul class="cards">
+
+    <li class="cards__item" *ngFor="let servicio of servicios"  routerLink="/producto/{{servicio.id}}">
+        <mat-card class="mat-class">
+
+            <mat-card-header>
+                <mat-card-title>{{servicio.nombre}}</mat-card-title>
+               
+            </mat-card-header>                                                                                         
+
+            <div>
+                <img mat-card-image src="{{servicio.imgURL}}" alt="{{servicio.nombre}}">
+            </div>
+
+            <mat-card-content>
+                <p>Tiempo de trabajo aprox.: {{servicio.descripcion}}
+                </p>
+            </mat-card-content>
+
+
+           
+            <mat-card-actions>
+                <app-button mat-button routerLink="/producto/{{servicio.id}}">Ver mas...</app-button>
+               
+            </mat-card-actions>
+
+        </mat-card>
+
+    </li>
+
+</ul>

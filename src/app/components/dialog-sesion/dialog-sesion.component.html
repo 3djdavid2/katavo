@@ -1,0 +1,61 @@
+<mat-card class="my-card">
+
+    <mat-card-title class="card-title">
+        <span class="title">Acceder a mi cuenta</span>
+    </mat-card-title>
+
+    <mat-card-content class="card-contenido">
+
+        <form [formGroup]="formIngreso" (ngSubmit)="signin()" class="my-form" *ngIf="!loading">
+
+            <mat-form-field class="full-width" color="primary">
+
+                <input class="email" type="email" id="email" matInput placeholder="Email" formControlName="email"
+                    autocomplete="off">
+
+                <div class="error" *ngIf="f['email'].touched && f['email'].invalid">
+                    <div *ngIf="f['email'].errors && f['email'].errors['required']">Email es requerido.</div>
+                    <div *ngIf="f['email'].errors && f['email'].errors['pattern']">email no válido.</div>
+                </div>
+
+                <div class="error" *ngIf="mensaje.includes('email')">{{mensaje}}</div>
+
+            </mat-form-field>
+
+
+            <mat-form-field class="full-width" color="accent">
+
+                <input class="password" id="password" type="password" matInput placeholder="Password"
+                    formControlName="password" autocomplete="off">
+
+                <div class="error" *ngIf="f['password'].touched && f['password'].invalid">
+                    <div *ngIf="f['password'].errors && f['password'].errors['required']">Password requerido</div>
+                    <div *ngIf="f['password'].errors && f['password'].errors['minlength']">no válido aún</div>
+                </div>
+
+                <div class="error" *ngIf="mensaje.includes('password')">{{mensaje}}</div>
+
+
+            </mat-form-field>
+
+            <mat-card-actions>
+                <a class="forgotpass" mat-dialog-close routerLink="/recuperapass">Olvidé mi contraseña</a>
+            </mat-card-actions>
+
+            <mat-card-actions>
+              
+                <button mat-raised-button type="submit"
+                 [disabled]="formIngreso.invalid"  class="signin btn-block"
+                   >Iniciar sesión</button>
+                <button mat-raised-button  class="signup" mat-dialog-close routerLink="signup">Registrarse</button>
+            </mat-card-actions>
+
+        </form>
+
+        <mat-spinner class="spinner" mode="indeterminate" diameter="50" *ngIf="loading"></mat-spinner>
+
+    </mat-card-content>
+
+
+
+</mat-card>

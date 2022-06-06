@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
  
-  baseUrl: '/api/send-email'
+  baseUrl: 'http://localhost:4000'
 };
 
 /*
