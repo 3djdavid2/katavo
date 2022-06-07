@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator } from '@angular/forms';
-import { Observable } from 'rxjs';
+
+import { Observable, BehaviorSubject } from 'rxjs';
 import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
@@ -11,15 +11,15 @@ export class AppComponent implements OnInit {
   
   title = 'katavo';
   user$!: Observable<any>;
-  isAuthorized$!: Observable<boolean>;
+  emailSource = new BehaviorSubject(null);
+  email$ = this.emailSource.asObservable();
 
  constructor(private authService: AuthService){
 
  }
   ngOnInit(): void {
     
-    this.user$= this.authService.email$ as Observable<any>
-    this.isAuthorized$= this.authService.isAuthorized$ as Observable<any>
+    this.user$= this.authService.email$ 
    
   }
 

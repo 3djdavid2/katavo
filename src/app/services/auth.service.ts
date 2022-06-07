@@ -12,15 +12,12 @@ export class AuthService {
 
   emailSource = new BehaviorSubject(null);
   email$ = this.emailSource.asObservable();
-  
-  isAuthorizedSource = new BehaviorSubject(null);
-  isAuthorized$ = this.isAuthorizedSource.asObservable();
-  logeado!:any;
+
   constructor(
     private http: HttpClient,
     private router: Router
   ) { 
-this.logeado=false
+
   }
 
 
@@ -32,7 +29,7 @@ this.logeado=false
   signIn(user: any) {
 
     this.emailSource.next(user)
-    this.isAuthorizedSource.next(this.logeado)
+
 
     let headers = new HttpHeaders({
       'clicksignin': 'true'
@@ -46,8 +43,7 @@ this.logeado=false
 
 
   //Comprobar si existe un token
-  isloggedIn() {
-    
+  isloggedIn() {    
     return window.localStorage.getItem('token');
   }
 
