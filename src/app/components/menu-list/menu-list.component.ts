@@ -1,25 +1,44 @@
-import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { DialogSesionComponent } from '../dialog-sesion/dialog-sesion.component';
-
 @Component({
   selector: 'app-menu-list',
   templateUrl: './menu-list.component.html',
   styleUrls: ['./menu-list.component.scss']
 })
-export class MenuListComponent {
+export class MenuListComponent implements OnInit{
 
   @Output() menuClicked = new EventEmitter();
   @Output() menuToggle = new EventEmitter<void>();
-  @Input() pEmail!: string;
+  pEmail!: string;
 
-  constructor( 
+  constructor(
     private dialog: MatDialog,
-    public authService: AuthService
-    ) {
+    public authService: AuthService,
+    private router:Router
+  ) {
 
-     }
+  }
+
+  ngOnInit(): void {
+    this.authService.isloggedIn();
+
+    this.authService.email$
+      .subscribe({
+        next: (res: any) => {
+          this.pEmail = res.email
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
+  }
+
 
 
   closeMenu() {
@@ -28,7 +47,7 @@ export class MenuListComponent {
   onClicked(): void {
     this.menuClicked.emit();
   }
-  listClose(){
+  listClose() {
     this.closeMenu();
     this.authService.logout();
   }
@@ -38,8 +57,15 @@ export class MenuListComponent {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-    this.dialog.open(DialogSesionComponent, dialogConfig);
+    let dialogRef = this.dialog.open(DialogSesionComponent, dialogConfig);
+
+    dialogRef.afterClosed()
+      .subscribe(() => {
+        this.router.onSameUrlNavigation
+      })
 
   }
+
+
 
 }

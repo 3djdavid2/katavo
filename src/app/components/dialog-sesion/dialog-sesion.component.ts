@@ -21,7 +21,7 @@ export class DialogSesionComponent{
   loading: boolean = false;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
     private _snackBar: MatSnackBar
   ) {
@@ -44,13 +44,13 @@ export class DialogSesionComponent{
   }
 
   async signin() {
-
+    
     await new Promise(resolve => {
-      this.loading = true
+      this.loading = true      
       setTimeout(resolve, 1000)
     });
 
-    this.loading = false;
+     this.loading = false;
 
     this.authService.signIn(this.formIngreso.value)
       .subscribe({

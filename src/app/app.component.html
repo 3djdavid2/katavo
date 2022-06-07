@@ -1,30 +1,15 @@
 <mat-sidenav-container>
 
   <mat-sidenav #menu role="navigation">
-    <app-menu-list [pEmail]="pEmail" (menuToggle)="menu.close()"></app-menu-list>
+    <app-menu-list  (menuToggle)="menu.close()"></app-menu-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <app-header [pEmail]="pEmail" (menuClicked)="menu.toggle()" ></app-header>
+    <app-header (menuClicked)="menu.toggle()" [isAuthorized]="isAuthorized$ | async" [user]="user$ | async"></app-header>
 
     <main>
       <router-outlet></router-outlet>
     </main>
-
-    <div class="borrar">
-      <h1>Bienvenida!</h1>
-      <h2>Mi página está en construcción</h2>
-      <h2>pero puedes llamarme o clic al</h2>
-      <h2>número de whatsapp para coordinar.</h2>
-      <br>
-      <h1> Whatsapp: <br><a href="https://wa.me/56975107693" target="_blank">+569 7510
-          7693</a>
-      </h1><br>
-      <h1> Dirección:</h1>
-      <a  href="https://www.google.cl/maps/place/1+Nte.+525,+Vi%C3%B1a+del+Mar,+Valpara%C3%ADso/@-33.0222098,-71.5547671,17.75z/data=!4m5!3m4!1s0x9689dde19b90494d:0x7633ff1658138915!8m2!3d-33.0220639!4d-71.5537354?hl=es&authuser=0"><h2> 1 Norte 525 Departamento 408 Edificio Puente Quinta</h2></a><br>
-      <h2> Viña Del Mar, Chile</h2><br><br>
-      <h2> -Mira mis fotitos en instagram <a href="https://www.instagram.com/katavo_peluqueria" target="_blank">katavo_peluqueria</a></h2>
-    </div>
 
     
   </mat-sidenav-content>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Output, EventEmitter, Input, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -9,10 +9,14 @@ import { DialogSesionComponent } from '../dialog-sesion/dialog-sesion.component'
   styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HeaderComponent implements OnChanges {
+export class HeaderComponent implements OnInit {
 
   @Output() menuClicked = new EventEmitter();
-  @Input() pEmail: any;
+  
+  @Input() user!: any;
+  @Input() isAuthorized!: any;
+
+  pEmail: any;
 
   constructor(
     private router: Router,
@@ -21,11 +25,25 @@ export class HeaderComponent implements OnChanges {
 
   }
 
-  
-ngOnChanges(changes: SimpleChanges): void {
-  console.log("cambios")
-}
+  ngOnInit(): void {
 
+    let logeado = this.authService.isloggedIn();
+    console.log("Esta logeado?", logeado)
+
+    this.authService.email$
+      .subscribe({
+        next: (res: any) => {
+          this.pEmail = res.email
+        },
+        error: (e: any) => {
+          console.log("el error es:", e)
+        },
+        complete: () => {
+          console.info('completed')
+        }
+      })
+
+  }
 
   onClicked(): void {
     this.menuClicked.emit();
@@ -41,7 +59,7 @@ ngOnChanges(changes: SimpleChanges): void {
 
     dialogRef.afterClosed()
       .subscribe(() => {
-        this.router.navigate(['/home'])
+        this.router.onSameUrlNavigation
       })
 
   }
