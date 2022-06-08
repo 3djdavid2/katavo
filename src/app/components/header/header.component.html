@@ -19,12 +19,12 @@
   </div>
 
   <div class="header__buttons">
-    <div *ngIf="!user; else loggedIn">   
+    <div *ngIf="!isLogged; else loggedIn">   
       <a class="app-a" (click)="openDialog()">Mi sesion</a>
     </div>
     <ng-template #loggedIn>
       <a class="app-a" routerLink="/perfil" >{{user ? user.email : null}}</a>
-      <a class="app-a" (click)="authService.logout()">Cerrar Sesion</a>
+      <a class="app-a" (click)="logout()">Cerrar Sesion</a>
     </ng-template>
   </div>
 

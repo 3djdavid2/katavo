@@ -8,19 +8,21 @@ import { AuthService } from './services/auth.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  
+
   title = 'katavo';
   user$!: Observable<any>;
-  emailSource = new BehaviorSubject(null);
-  email$ = this.emailSource.asObservable();
 
- constructor(private authService: AuthService){
+  constructor(public authService: AuthService) {
 
- }
+  }
   ngOnInit(): void {
-    
-    this.user$= this.authService.email$ 
-   
+
+    this.user$ = this.authService.email$
+    this.user$.subscribe((res) => {
+      console.log("res es: ", res.email)
+    })
+
+
   }
 
 }

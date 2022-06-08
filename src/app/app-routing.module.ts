@@ -11,6 +11,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: '**',
+    redirectTo: 'home'
+  },
+  {
     path: '',
     children: [
       {
@@ -31,10 +35,7 @@ const routes: Routes = [
     path: 'contacto',
     component: ContactoComponent
   },
-  {
-    path: 'dialogsesion',
-    component: DialogSesionComponent
-  }
+  
 
 ];
 

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, AbstractControl } from '@angular/forms'
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { DialogSesionComponent } from '../dialog-sesion/dialog-sesion.component';
 //importo el servicio
+
 import { AuthService } from '../../services/auth.service';
 //material
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -21,7 +24,8 @@ export class SignupComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private _snackBar: MatSnackBar
+    private _snackBar: MatSnackBar,
+    private dialog: MatDialog,
   ) {
 
     this.formRegistro = new FormGroup({
@@ -62,7 +66,8 @@ export class SignupComponent {
 
           if (res.token === 'tosignin') {
             alert("Ya existe email, se reenviará a Login");
-            this.router.navigate(['/signin']);
+
+            this.openDialog();
 
           } else if (res.token === 'tomailconfirm') {
             alert("se enviará un email de confirmacion")
@@ -87,6 +92,19 @@ export class SignupComponent {
             passwordConfirm: new FormControl(),
           })
         }
+      })
+  }
+
+  openDialog() {
+
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    let dialogRef = this.dialog.open(DialogSesionComponent, dialogConfig);
+
+    dialogRef.afterClosed()
+      .subscribe(() => {
+        this.router.onSameUrlNavigation
       })
   }
 

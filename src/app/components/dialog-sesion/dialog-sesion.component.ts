@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router'
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 //importo el servicio
@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 })
-export class DialogSesionComponent{
+export class DialogSesionComponent {
 
   formIngreso: FormGroup;
   mensaje: string = "";
@@ -38,19 +38,20 @@ export class DialogSesionComponent{
     })
 
   }
- 
+
   get f() {
     return this.formIngreso.controls
   }
 
+  //Submit
   async signin() {
-    
+
     await new Promise(resolve => {
-      this.loading = true      
+      this.loading = true
       setTimeout(resolve, 1000)
     });
 
-     this.loading = false;
+    this.loading = false;
 
     this.authService.signIn(this.formIngreso.value)
       .subscribe({
@@ -69,7 +70,7 @@ export class DialogSesionComponent{
 
             // 
             localStorage.setItem('token', res.token);
-            this.router.navigate(['/home']);
+            this.router.navigate(['/contacto']);
           }
 
         },
@@ -82,7 +83,7 @@ export class DialogSesionComponent{
         },
         complete: () => {
           console.info('signin completed')
-          
+
         }
       })
   }

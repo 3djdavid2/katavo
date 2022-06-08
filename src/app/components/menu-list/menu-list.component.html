@@ -7,7 +7,7 @@
 
 
   <a>
-    <div *ngIf="!authService.isloggedIn(); else loggedIn">
+    <div *ngIf="!isLogged; else loggedIn">
       <a mat-list-item (click)="openDialog()">
         <mat-icon>login</mat-icon>
         <span class="navegation-list-label" >MI SESIÓN</span>

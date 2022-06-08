@@ -14,8 +14,8 @@ export class HeaderComponent implements OnInit {
   @Output() menuClicked = new EventEmitter();
   
   @Input() user!: any;
-  @Input() isAuthorized!: any;
-
+  @Input() isLogged!: any;
+  
   pEmail: any;
 
   constructor(
@@ -27,8 +27,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let logeado = this.authService.isloggedIn();
-    console.log("Esta logeado?", logeado)
+    this.authService.isloggedIn();
+   
 
     this.authService.email$
       .subscribe({
@@ -61,6 +61,16 @@ export class HeaderComponent implements OnInit {
       .subscribe(() => {
         this.router.onSameUrlNavigation
       })
+  }
 
+
+  logout(){
+    this.authService.logout()
+   let res= this.authService.isloggedIn()
+   if(res== null){  
+    console.log("No esta logeado")
+    this.user=false
+   }
+   console.log("en logout islogginIn() es: ", res)
   }
 }

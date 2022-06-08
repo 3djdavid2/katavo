@@ -1,12 +1,12 @@
 <mat-sidenav-container>
 
   <mat-sidenav #menu role="navigation">
-    <app-menu-list (menuToggle)="menu.close()"></app-menu-list>
+    <app-menu-list (menuToggle)="menu.close()" [user]="user$ | async" [isLogged]="authService.isLogged | async"></app-menu-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
 
-    <app-header (menuClicked)="menu.toggle()" [user]="user$ | async"></app-header>
+    <app-header (menuClicked)="menu.toggle()" [user]="user$ | async" [isLogged]="authService.isLogged | async"></app-header>
 
     <main>
       <router-outlet></router-outlet>

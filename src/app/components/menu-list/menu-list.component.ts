@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
@@ -12,6 +12,10 @@ export class MenuListComponent implements OnInit{
 
   @Output() menuClicked = new EventEmitter();
   @Output() menuToggle = new EventEmitter<void>();
+
+  @Input() user!: any;
+  @Input() isLogged!: any;
+
   pEmail!: string;
 
   constructor(
@@ -50,6 +54,7 @@ export class MenuListComponent implements OnInit{
   listClose() {
     this.closeMenu();
     this.authService.logout();
+    this.user=false;
   }
 
   openDialog() {
